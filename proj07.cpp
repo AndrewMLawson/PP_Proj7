@@ -153,7 +153,7 @@ main( int argc, char *argv[ ] )
 	}
 	else
 	{
-		MPI_Recv( PPSignal, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD, &status );
+		MPI_Recv( PPSignal, PPSize+MAXSHIFTS, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD, &status );
 	}
 
 	// each processor does its own autocorrelation:
