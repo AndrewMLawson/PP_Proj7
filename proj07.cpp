@@ -163,7 +163,7 @@ main( int argc, char *argv[ ] )
 		{
 			if( dst != THEBOSS )
 			{
-				MPI_Send( &BigSignal[dst*PPSize], ???, ???, ???, ???, ??? );
+				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_CHAR, dst, "Z", MPI_COMM_WORLD );
 			}
 		}
 	}
