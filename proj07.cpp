@@ -55,23 +55,7 @@ int	PPSize;			// per-processor local array size
 // function prototype:
 
 void	DoOneLocalAutocorrelation( int );
-void
-DoOneLocalAutocorrelation( int me )
-{
-	MPI_Status status;
 
-	if( DEBUG )	fprintf( stderr, "Node %3d entered DoOneLocalAutocorrelation( )\n", me );
-
-	for( int s = 0; s < MAXSHIFTS; s++ )
-	{
-		float sum = 0.;
-		for( int i = 0; i < PPSize; i++ )
-		{
-			sum += PPSignal[i] * PPSignal[i+s];
-		}
-		PPSums[s] = sum;
-	}
-}
 
 int
 main( int argc, char *argv[ ] )
@@ -163,13 +147,13 @@ main( int argc, char *argv[ ] )
 		{
 			if( dst != THEBOSS )
 			{
-				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_CHAR, dst, 'Z', MPI_COMM_WORLD );
+				MPI_Send( &BigSignal[dst*PPSize], ???, ???, ???, ???, ??? );
 			}
 		}
 	}
 	else
 	{
-		MPI_Recv( PPSignal, PPSize, MPI_CHAR, THEBOSS, 'Z', MPI_COMM_WORLD, &status );
+		MPI_Recv( PPSignal, ???, ???, ???, ???, ???, &status );
 	}
 
 	// each processor does its own autocorrelation:
@@ -245,3 +229,23 @@ main( int argc, char *argv[ ] )
 	return 0;
 }
 
+
+// read from the per-processor signal array, write into the local sums array:
+
+void
+DoOneLocalAutocorrelation( int me )
+{
+	MPI_Status status;
+
+	if( DEBUG )	fprintf( stderr, "Node %3d entered DoOneLocalAutocorrelation( )\n", me );
+
+	for( int s = 0; s < MAXSHIFTS; s++ )
+	{
+		float sum = 0.;
+		for( int i = 0; i < PPSize; i++ )
+		{
+			sum += PPSignal[i] * PPSignal[i+s];
+		}
+		PPSums[s] = sum;
+	}
+}
