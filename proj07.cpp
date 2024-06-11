@@ -163,13 +163,13 @@ main( int argc, char *argv[ ] )
 		{
 			if( dst != THEBOSS )
 			{
-				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_CHAR, dst, "Z", MPI_COMM_WORLD );
+				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_CHAR, dst, 'Z', MPI_COMM_WORLD );
 			}
 		}
 	}
 	else
 	{
-		MPI_Recv( PPSignal, ???, ???, ???, ???, ???, &status );
+		MPI_Recv( PPSignal, PPSize, MPI_CHAR, THEBOSS, 'Z', MPI_COMM_WORLD, &status );
 	}
 
 	// each processor does its own autocorrelation:
