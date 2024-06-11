@@ -6,4 +6,4 @@ Node   5 entered DoOneLocalAutocorrelation( )
 Node   6 entered DoOneLocalAutocorrelation( )
 Node   0 entered DoOneLocalAutocorrelation( )
 Node   7 entered DoOneLocalAutocorrelation( )
-  8 processors,    8388608 elements,   2131.82 mega-autocorrelations computed per second
+  8 processors,    8388608 elements,   2662.35 mega-autocorrelations computed per second
