@@ -10,4 +10,4 @@
 #SBATCH --mail-user=lawsoand@oregonstate.edu
 module load openmpi
 mpic++ proj07.cpp -o proj07 -lm
-mpiexec -mca btl self,tcp -np 1 ./proj07
+mpiexec -mca btl self,tcp -np 8 ./proj07
